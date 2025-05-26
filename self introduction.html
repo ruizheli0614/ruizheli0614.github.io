@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+        .tabs {
+            display: flex;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 16px;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        .tab:hover {
+            color: #007bff;
+        }
+        .tab.active {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+        }
+        .content {
+            display: none;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .content.active {
+            display: block;
+        }
+        .profile-section {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #007bff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .profile-info {
+            flex: 1;
+        }
+        h1, h2, h3, h4 {
+            color: #333;
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+            font-weight: 600;
+        }
+        h1 {
+            font-size: 1.5em;
+            border: none;
+            padding-bottom: 0;
+        }
+        h2 {
+            font-size: 1.2em;
+            color: #007bff;
+        }
+        h3 {
+            font-size: 1.05em;
+            color: #444;
+        }
+        h4 {
+            font-size: 1.05em;
+            color: #555;
+        }
+        .research-interests {
+            margin-top: 20px;
+        }
+        .research-interests ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .research-interests li {
+            margin: 10px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+            transition: transform 0.2s ease;
+        }
+        .research-interests li:hover {
+            transform: translateX(5px);
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .research-content, .proposal-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .research-content ul, .proposal-content ul {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .research-content li, .proposal-content li {
+            margin: 10px 0;
+        }
+        strong {
+            color: #007bff;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            border: none;
+            color: #007bff;
+        }
+        .contact-bar {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 8px;
+        }
+        .section-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            padding: 24px 28px;
+            margin-bottom: 22px;
+        }
+        .timeline h3, .timeline h4 {
+            margin: 12px 0 4px 0;
+            color: #007bff;
+            font-size: 1.1em;
+        }
+        .timeline p, .timeline ul {
+            margin: 0 0 10px 0;
+        }
+        .timeline ul {
+            padding-left: 20px;
+        }
+        .skill-badge {
+            display: inline-block;
+            background: #e3f0ff;
+            color: #007bff;
+            border-radius: 20px;
+            padding: 7px 18px;
+            margin: 6px 8px 6px 0;
+            font-size: 1em;
+            font-weight: 500;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        /* Research Plan Table Custom Styles */
+        .research-plan {
+            border: 1px solid #e0e0e0;
+            margin: 2rem 0;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .research-plan table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .research-plan td {
+            padding: 1.5rem;
+            vertical-align: top;
+            border-bottom: 1px solid #eee;
+        }
+        .research-plan tr:last-child td {
+            border-bottom: none;
+        }
+        .method-highlight {
+            background: #f4f6f8;
+            border-left: 4px solid #3498db;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .innovation-box {
+            background: #fff7e6;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        .research-plan h4 {
+            color: #2c3e50;
+            margin: 1rem 0 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <button class="tab active" onclick="showTab('home')">Home</button>
+        <button class="tab" onclick="showTab('cv')">CV</button>
+        <button class="tab" onclick="showTab('master')">Master Project</button>
+        <button class="tab" onclick="showTab('research')">Research Interest</button>
+    </div>
+
+    <div id="home" class="content active">
+        <div class="container" style="max-width: 800px; margin: 0 auto; padding: 20px;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <img src="profile.jpg" alt="Ruizhe Li" class="profile-image" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 20px;">
+                <h1 style="color: #007bff; margin-bottom: 10px;">Hi, I'm Ruizhe Li</h1>
+                <div class="contact-info" style="margin-bottom: 20px;">
+                    <p style="margin: 5px 0;"><strong>Tel:</strong> +852 9417 4403</p>
+                    <p style="margin: 5px 0;"><strong>Email:</strong> <a href="mailto:rlibk@connect.ust.hk" style="color: #007bff; text-decoration: none;">rlibk@connect.ust.hk</a></p>
+                </div>
+            </div>
+
+            <div class="research-summary" style="background-color: #f8f9fa; padding: 30px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.07);">
+                <h2 style="color: #007bff; margin-bottom: 20px;">Research Focus</h2>
+                <p style="margin-bottom: 20px; line-height: 1.8;">
+                    As a highly motivated molecular researcher with expertise in protein interaction studies and genetic manipulation, I am eager to contribute to the understanding of 3D chromatin-epigenetic crosstalk in reproductive disorders, particularly PCOS-related retroelement dysregulation. My current research interests focus on GPCR dysregulation in PCOS metabolic homeostasis, lipid-mediated receptor trafficking, AI-driven therapeutic discovery, and clinical cohort validation with multi-omics integration.
+                </p>
+                <p style="margin-bottom: 15px;">
+                    I am particularly interested in:
+                </p>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li style="margin: 10px 0; padding: 15px; background-color: #fff; border-radius: 5px; border-left: 4px solid #007bff;">
+                        Characterizing β-arrestin recruitment in PCOS-associated GPCRs (GPR30, GLP1R)
+                    </li>
+                    <li style="margin: 10px 0; padding: 15px; background-color: #fff; border-radius: 5px; border-left: 4px solid #007bff;">
+                        Profiling lipid species in ovarian follicular fluid and correlating them with receptor internalization kinetics
+                    </li>
+                    <li style="margin: 10px 0; padding: 15px; background-color: #fff; border-radius: 5px; border-left: 4px solid #007bff;">
+                        Applying AI and machine learning to identify novel therapeutic targets and develop risk stratification systems for PCOS
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="cv" class="content">
+        <div class="cv-container" style="display: flex; gap: 30px;">
+            <!-- Left Column -->
+            <div style="flex: 1; max-width: 300px;">
+                <div class="section-card" style="text-align: center;">
+                    <img src="profile.jpg" alt="Profile Photo" class="profile-image" style="width: 180px; height: 180px;">
+                    <h1 style="margin-top: 15px;">Ruizhe Li</h1>
+                    <div class="contact-bar" style="margin-top: 10px;">
+                        <p style="margin: 5px 0;">Tel: +852 9417 4403</p>
+                        <p style="margin: 5px 0;">Email: rlibk@connect.ust.hk</p>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <h2>🛠 Core Competencies</h2>
+                    <div class="skill-badge">Mammalian Cell Culture</div>
+                    <div class="skill-badge">Gene editing</div>
+                    <div class="skill-badge">Flow Cytometry</div>
+                    <div class="skill-badge">Protein Interaction Analysis</div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div style="flex: 2;">
+                <div class="section-card">
+                    <h2>🎓 Education</h2>
+                    <div class="timeline">
+                        <h3>MPhil in Life Science | HKUST (2021-2024)</h3>
+                        <p>Supervisor: Prof. David Banfield</p>
+                        <div style="font-weight:bold; margin: 4px 0 10px 0;">Thesis: The Role of RENT Complex in Stress-induced Ectopic Activation of the Spindle Assembly Checkpoint in Budding Yeast</div>
+                        <h3>MSc in Biotechnology | HKUST (2021-2022)</h3>
+                        <p>GPA: 3.648</p>
+                        <h3>Bachelor of Science in Biotechnology | Wuhan University of Technology (2017-2021)</h3>
+                        <p>Project 211 University</p>
+                        <p>GPA: 3.298</p>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <h2>💼 Research Experience</h2>
+                    <div class="timeline">
+                        <h3>Research Assistant | CTSCB (2024-2025)</h3>
+                        <ul>
+                            <li>Developed EPSC reprogramming protocols (85% monoclonality)</li>
+                            <li>Established flow cytometry SOPs for pluripotency validation</li>
+                        </ul>
+                        <h3>Yeast Genetics Researcher | HKUST (2021-2024)</h3>
+                        <ul>
+                            <li>Identified 3 novel SAC regulators via Co-IP/Western Blot</li>
+                            <li>Pioneered PEG3350-mediated transformation protocols</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="master" class="content">
+        <h1>Master's Research</h1>
+        <div style="font-weight:bold; text-align:center; margin: 18px 0 24px 0; font-size:1.1em;">
+            The Role of RENT Complex in Stress-induced Ectopic Activation of the Spindle Assembly Checkpoint in Budding Yeast
+        </div>
+        <div class="research-content">
+            <h3>Abstract</h3>
+            <p>This study investigates the role of the RENT complex in stress-induced ectopic activation of the Spindle Assembly Checkpoint (SAC) in budding yeast. The research focuses on understanding how TORC1 and its effector SCH9 contribute to SAC activation in cells with defective GPI-APs remodeling.</p>
+
+            <h3>Key Findings</h3>
+            <ul>
+                <li>TORC1 and SCH9 are required for SAC activation in cdc1-26 cells
+                    <div style="text-align:center; margin: 12px 0;">
+                        <img src="figure1.png" alt="SAC activation model" style="max-width: 90%;">
+                    </div>
+                </li>
+                <li>Net1p cleavage occurs before cell cycle arrest in dcr2-6 ted1∆ cells</li>
+                <li>Proteolytic cleavage of Net1p is specific to the failure to remove EtNP from Man2 of GPI-APs</li>
+                <li>Net1p cleavage is a downstream effect of Clathrin-Mediated Endocytosis (CME) blockage</li>
+            </ul>
+            <div style="text-align:center; margin: 20px 0;">
+                <img src="figure2.png" alt="Net1p cleavage model" style="max-width: 90%;">
+            </div>
+
+            <h3>Research Methods</h3>
+            <p>The study employed various techniques including:</p>
+            <ul>
+                <li>Fluorescence microscopy for Mad2p-mNeon coincident foci analysis</li>
+                <li>Western blotting for protein analysis</li>
+                <li>Serial dilution assays for growth analysis</li>
+                <li>Genetic manipulation of yeast strains</li>
+            </ul>
+
+            <h3>Significance</h3>
+            <p>This research contributes to our understanding of:</p>
+            <ul>
+                <li>Cell cycle regulation mechanisms</li>
+                <li>Role of GPI-APs in cellular stress response</li>
+                <li>Connection between TORC1 signaling and SAC activation</li>
+                <li>Potential implications for cancer research and treatment</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="research" class="content">
+        <h1>Research Interests</h1>
+        <div class="research-content">
+            <div class="section-card">
+                <h2>Current Research Focus</h2>
+                <ul>
+                    <li>GPCR dysregulation in PCOS metabolic homeostasis</li>
+                    <li>Lipid-mediated receptor trafficking and metabolic crosstalk</li>
+                    <li>AI-driven therapeutic discovery for metabolic GPCRs</li>
+                    <li>Clinical cohort validation with multi-omics integration</li>
+                </ul>
+            </div>
+
+            <div class="section-card">
+                <h2>Future Research Directions</h2>
+                <div class="research-plan">
+                    <table>
+                        <tr>
+                            <td style="width:25%; background:#f8f9fa;">Therapeutic Targets</td>
+                            <td>
+                                <h4>GPCR Dysregulation in Metabolic Homeostasis</h4>
+                                <ul>
+                                    <li>Characterize β-arrestin recruitment in PCOS-associated GPCRs (GPR30, GLP1R)</li>
+                                    <li>Quantify receptor density changes via <em>in vivo</em> bioluminescence resonance energy transfer</li>
+                                    <li>Identify metabolic GPCRs as therapeutic targets using XGBoost and multi-omics data</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Metabolic Crosstalk</td>
+                            <td>
+                                <h4>Lipid-Mediated Receptor Trafficking</h4>
+                                <ol>
+                                    <li>Profile 94 lipid species in ovarian follicular fluid (UHPLC-QTOF)</li>
+                                    <li>Correlate sphingosine-1-phosphate levels with GPR120 internalization kinetics</li>
+                                </ol>
+                                <h4>Multi-omics Integration</h4>
+                                <ul>
+                                    <li>Combine metabolomics, phosphoproteomics, and transcriptomics for pathway analysis</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Translational Pipeline</td>
+                            <td>
+                                <div class="innovation-box">
+                                    <h4>AI-Driven Therapeutic Discovery</h4>
+                                    <p>① Virtual screening of 200K compounds against GPCR structural models<br>
+                                    ② DeepMetric learning analysis of metabolic GPCR conformations</p>
+                                </div>
+                                <h4>Clinical Validation</h4>
+                                <ul>
+                                    <li>Longitudinal PCOS cohort (n=1,200) with GPCR activation profiling</li>
+                                    <li>Development of AI-powered risk stratification system</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            // Hide all content
+            document.querySelectorAll('.content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected content and activate tab
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html> 
